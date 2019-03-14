@@ -2,20 +2,14 @@
 
 cd
 
-repo=.dotfiles.pub
+repo=dotfiles.pub
 
-for item in bin.pub .profile .abcde.conf .clojure-repl.conf .gitignore .gitconfig .weechat '.bash*' '.vim*' .tmux.conf .inputrc; do
+for item in bin.pub .profile .clojure-repl.conf .gitignore .gitconfig '.bash*' .tmux.conf .inputrc; do
     ln -vsf ~/$repo/$item ~/
 done
 
 mkdir -p ~/.emacs.d
 ln -vsf ~/$repo/.emacs.d/init.el ~/.emacs.d/
-
-mkdir -p ~/.i3
-ln -vsf ~/$repo/.i3/config ~/.i3/
-
-mkdir -p ~/.config/LightTable/settings/
-ln -vsf ~/$repo/.config/LightTable/settings/* ~/.config/LightTable/settings/
 
 ## clj-repl
 cljrepldir=~/.clj-repl
