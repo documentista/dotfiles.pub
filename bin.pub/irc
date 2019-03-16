@@ -1,4 +1,0 @@
-#!/bin/bash
-
-screen -rx irc
-#tmux -S ~moquist/.tmux/irc attach
