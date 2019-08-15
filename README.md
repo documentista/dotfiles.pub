@@ -1,2 +1,7 @@
-These are my public dotfiles. Start with a fresh user account (so you don't risk
-anything), git clone, move the repo to ~/.dotfiles.pub/, and then ```bash .dotfiles.pub/bin.pub/dotfiles.pub-set-up``` to start using them.
+These are my public dotfiles. 
+For a risk free experience, start with a fresh user account
+
+To use: 
+1- git clone this repo 
+1- move the repo to ~/.dotfiles.pub/
+1- ```bash .dotfiles.pub/bin.pub/dotfiles.pub-set-up``` to start using them.

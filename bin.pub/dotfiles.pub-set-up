@@ -1,28 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 cd
 
 repo=dotfiles.pub
 
-for item in bin.pub .profile .clojure-repl.conf .gitignore .gitconfig '.bash*' .tmux.conf .inputrc; do
-    ln -vsf ~/$repo/$item ~/
+for item in bin.pub ; do
+    ln -vsf ~/$repo/$item ~/bin
 done
 
-mkdir -p ~/.emacs.d
-ln -vsf ~/$repo/.emacs.d/init.el ~/.emacs.d/
-
-## clj-repl
-cljrepldir=~/.clj-repl
-if [[ ! -d $cljrepldir ]]; then
-    git clone https://github.com/moquist/clj-repl "$cljrepldir"
-fi
-git -C "$cljrepldir" pull # hmm. pull?
-ln -vsf "$cljrepldir"/clj-repl.el ~/.emacs.d/
-ln -vsf "$cljrepldir"/clojure-repl ~/bin.pub/
-
-## emacs solarized theme
-solarizeddir=~/.solarized
-if [[ ! -d $solarizeddir ]]; then
-    git clone https://github.com/sellout/emacs-color-theme-solarized "$solarizeddir"
-fi
-git -C "$solarizeddir" pull # hmm. pull?
+for item in .profile .gitignore '.bash*'; do
+    ln -vsf ~/$repo/$item ~/
+done
