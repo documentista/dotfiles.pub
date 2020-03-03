@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+usage() {
+  echo "Usage: monitor-rate <env> <app>, where <env> is the environment whose containers you want to monitor and <app> is the application. (e.g: rate, persist, etc.)."
+  exit 1;
+}
+
+#display usage info if no args passed
+[[ $# -eq 0 ]] && usage 
+
+DOCKER_CLI_HOME=$( [ "$1"=="production" ] && echo "$DOCKER_CLI_PROD" || echo "$DOCKER_CLI_NON_PROD")
+cd "$DOCKER_CLI_HOME"
+export PWD=`pwd`
+eval $(<env.sh)
+docker container ls | grep "slice-rent-simp-honeycomb-$1_$2*" | awk -F '[[:space:]][[:space:]]+'  '{split($0,a); print a[1] "    " a[2] "     " a[5]}'

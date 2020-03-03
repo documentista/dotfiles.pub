@@ -1,0 +1,12 @@
+#!/bin/bash
+# Target service url passed to script should ONLY include domain and NOT path
+# Target service url in Postman or server should point to wiremock server and contain url path: http://localhost:[wiremock port]/[service path]
+# If target service url is https, certs must be added to wiremock server.  If http, no additional config is required.
+# wiremock standalone jar must be in same folder as this script.
+# CNTL-C to stop server.
+if [[ -z "$1" ]]; then
+ echo "Please enter target service url"
+ exit 1
+fi
+TARGET_URL="$1"
+java -jar ~/bin/wiremock/wiremock-standalone-2.25.1.jar --proxy-all=$TARGET_URL --port 0 --record-mappings --verbose
