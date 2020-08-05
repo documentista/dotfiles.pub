@@ -9,4 +9,4 @@ if [[ -z "$1" ]]; then
  exit 1
 fi
 TARGET_URL="$1"
-java -jar ~/bin/wiremock/wiremock-standalone-2.25.1.jar --proxy-all=$TARGET_URL --port 0 --record-mappings --verbose
+java -jar ~/bin/wiremock/wiremock-standalone-2.25.1.jar --proxy-all=$TARGET_URL --port 5150 --record-mappings --verbose
