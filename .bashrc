@@ -2,7 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-source ~/bin/git-completion.bash
+#source ~/bin/git-completion.bash
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
@@ -21,9 +21,16 @@ yurkilnmesmls() {
     git add .
     git commit -m "$1"
 }
-
-alias saltnpepa="git push"
+alias sup?="git status"
+alias yeet="git push"
 
 
 # Load user-specific settings
 [ -r $HOME/.bashrc.mine ] && . $HOME/.bashrc.mine
+
+# added by travis gem
+[ -f /Users/n0310047/.travis/travis.sh ] && source /Users/n0310047/.travis/travis.sh
+
+# add github ssh key
+eval "$(ssh-agent -s)"
+ssh-add -K ~/.ssh/github_rsa
