@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-export DOCKER_CLI_PROD="~/slice-renters-simple-prod-ucp"
-export DOCKER_CLI_NON_PROD="~/non_prod_docker_cli"
-
-
-
