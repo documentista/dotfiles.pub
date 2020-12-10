@@ -10,6 +10,6 @@ for item in bin.pub ; do
 done
 
 # create symlinks from user's home dir to config files in repo
-for item in .profile .gitignore '.z*' '.bash*'; do
+for item in .gitignore '.z*'; do
     ln -vsf ~/$repo/$item ~/
 done
