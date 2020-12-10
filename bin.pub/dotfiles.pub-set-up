@@ -4,10 +4,12 @@ cd
 
 repo=dotfiles.pub
 
+# create symlinks from user's bin to all scripts in bin.pub
 for item in bin.pub ; do
     ln -vsf ~/$repo/$item ~/bin
 done
 
-for item in .profile .gitignore '.bash*'; do
+# create symlinks from user's home dir to config files in repo
+for item in .profile .gitignore '.z*' '.bash*'; do
     ln -vsf ~/$repo/$item ~/
 done
