@@ -1,0 +1,5 @@
+#! /usr/bin/env zsh
+
+brew remove --force $(brew list --formula) --ignore-dependencies
+brew cleanup
+brew remove --cask remove --force $(brew list --cask)
