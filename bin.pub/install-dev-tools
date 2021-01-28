@@ -6,7 +6,7 @@ xcode-select --install
 # brew it up! install all the things; tapping where necessary 
 brew update
 brew tap aws/tap
-brew install aws-cdk awscli aws-sam-cli gcc openjdk@8 node@12 python remotemobprogramming/brew/mob yarn 
+brew install aws-cdk awscli aws-sam-cli gcc openjdk@8 node@12 python remotemobprogramming/brew/mob slack yarn 
 
 
 # install IDEs (JetBrains products to start)
