@@ -1,21 +1,54 @@
 #!/usr/bin/env zsh
 
-# install macos command line tools so we can install gcc used by yarn
+# Tools and utilities we typically use day to day for both Java and Javascript development
+ssb_dev_tools=(aws-cdk awscli aws-sam-cli gcc openjdk@8 node@12 python remotemobprogramming/brew/mob slack yarn)
+
+# Apps installed with cask
+ssb_dev_apps=(intellij-idea webstorm postman)
+
+
+re_install='false'
+verbose='false'
+
+print_usage() {
+  echo "Install Tools and Apps used by SSB Dev Team ..."
+  echo "Syntax: install_dev_tools.sh [r|v]"
+  echo "Options: -r: Remove ssb dev tools and re-install"
+}
+
+while getopts 'rv' flag; do
+  case "${flag}" in
+    r) re_install='true' ;;
+    v) verbose='true' ;;
+    *) print_usage
+       exit 1 ;;
+  esac
+done
+
+if [ $re_install ]
+then
+   brew remove ${ssb_dev_apps}
+   brew remove ${ssb_dev_tools}
+fi
+
+# install mac os command line tools so we can install gcc used by yarn
 xcode-select --install
 
 # brew it up! install all the things; tapping where necessary 
 brew update
 brew tap aws/tap
-brew install aws-cdk awscli aws-sam-cli gcc openjdk@8 node@12 python remotemobprogramming/brew/mob slack yarn 
+brew install ${ssb_dev_tools}
 
 
 # install IDEs (JetBrains products to start)
-brew install --cask  intellij-idea webstorm postman
+brew install --cask ${ssb_dev_apps} 
 
 # OK, now let's update path: first in line python, then node
 echo 'export PATH="/usr/local/opt/node@12/bin:$PATH"' >> ~/.zprofile
 echo "export SAM=`which python3`" >> ~/.zprofile
-echo "export PATH=$SAM/bin:$PATH" >> ~/.bash_profile
+echo "export PATH=$SAM/bin:$PATH" >> ~/.zprofile
+
+./dotfiles.pub-set-up
 
 # Lastly, set up AWS creds for A-account
 curl https://repo.forge.lmig.com/content/repositories/ets-releases/com/lmig/ets/public-cloud/aws-saml-api-keys/2.4-55/aws-saml-api-keys-2.4-55.zip --output aws-saml-api-keys-2.4-55.zip
